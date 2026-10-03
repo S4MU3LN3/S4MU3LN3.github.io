@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Cuaderno de investigación de Samuel. N: avances, artículos, noticias y avisos.">
+<title>Samuel. N | Cuaderno de investigación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#F5F3FB; --tinta:#1D1A3B; --suave:#5A5878; --linea:#D9D4EC;
+  --violeta:#5B3FD9; --noche:#1D1A3B; --lima:#D7F25C; --menta:#C4EEE0; --blanco:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:'Source Serif 4',Georgia,serif;font-size:1.15rem;line-height:1.65}
+h1,h2,h3,nav,.fecha,.etiqueta,.boton{font-family:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif}
+a{color:var(--violeta)}
+a:focus-visible,.boton:focus-visible{outline:3px solid var(--lima);outline-offset:3px}
+.contenedor{max-width:800px;margin:0 auto;padding:0 22px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+
+
+.barra{position:sticky;top:0;z-index:10;background:rgba(245,243,251,.94);border-bottom:2px solid var(--tinta)}
+.barra .contenedor{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.marca{font-weight:800;text-decoration:none;color:var(--tinta);font-size:1.15rem}
+nav a{margin-left:18px;text-decoration:none;color:var(--tinta);font-size:.98rem;font-weight:500;padding:2px 0;border-bottom:3px solid transparent}
+nav a:hover{border-bottom-color:var(--lima)}
+
+
+.portada{
+  padding:76px 0 64px;
+  background-color:var(--papel);
+  background-image:
+    linear-gradient(var(--linea) 1px,transparent 1px),
+    linear-gradient(90deg,var(--linea) 1px,transparent 1px);
+  background-size:32px 32px;
+  border-bottom:2px solid var(--tinta);
+}
+.portada h1{font-size:clamp(3.2rem,13vw,6.6rem);line-height:.95;margin:0 0 20px;font-weight:800;letter-spacing:-.04em}
+.portada .lema{font-size:1.3rem;max-width:34ch;margin:0;color:var(--tinta)}
+
+section{padding:56px 0}
+h2{font-size:clamp(1.9rem,5vw,2.6rem);margin:0 0 6px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.sub{color:var(--suave);margin:0 0 32px}
+.vacio{color:var(--suave);font-style:italic;margin:0}
+.fondo-blanco{background:var(--blanco);border-top:2px solid var(--tinta);border-bottom:2px solid var(--tinta)}
+
+
+.linea{border-left:3px solid var(--tinta);margin-left:7px;padding-left:28px}
+.avance{position:relative;margin-bottom:34px}
+.avance::before{content:"";position:absolute;left:-39px;top:6px;width:16px;height:16px;background:var(--lima);border:3px solid var(--tinta);border-radius:50%}
+.fecha{font-size:.92rem;color:var(--suave);margin:0;font-weight:500}
+.avance h3{margin:2px 0 6px;font-size:1.35rem;font-weight:800;letter-spacing:-.02em}
+.avance p{margin:0}
+.etiqueta{display:inline-block;font-size:.82rem;font-weight:500;padding:2px 12px;border-radius:99px;background:var(--menta);border:2px solid var(--tinta);margin-top:10px}
+
+
+
+.articulos{display:grid;gap:16px}
+.articulo{background:var(--blanco);border:2px solid var(--tinta);padding:20px 22px;box-shadow:5px 5px 0 var(--violeta)}
+.articulo h3{margin:2px 0 6px;font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+.articulo h3 a{color:var(--tinta);text-decoration-color:var(--violeta);text-decoration-thickness:3px;text-underline-offset:4px}
+.articulo h3 a:hover{color:var(--violeta)}
+.articulo p{margin:0}
+
+
+
+.avisos{display:grid;gap:16px}
+.aviso{background:var(--menta);border:2px solid var(--tinta);padding:16px 20px}
+.aviso:nth-child(even){background:var(--lima)}
+.aviso strong{font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+.aviso p{margin:4px 0 0}
+
+
+.noticia{padding:20px 0;border-bottom:2px solid var(--linea)}
+.noticia:first-child{padding-top:0}
+.noticia:last-child{border-bottom:none;padding-bottom:0}
+.noticia h3{margin:2px 0 6px;font-size:1.3rem;font-weight:800;letter-spacing:-.02em}
+.noticia p{margin:0 0 6px}
+.noticia a{font-family:'Bricolage Grotesque',sans-serif;font-weight:500}
+
+
+h3.subtitulo{font-family:'Bricolage Grotesque',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin:0 0 16px}
+.bloque + .bloque{margin-top:44px}
+.tarjetas{display:grid;gap:16px}
+@media (min-width:680px){.tarjetas{grid-template-columns:1fr 1fr}}
+.tarjeta{background:var(--blanco);border:2px solid var(--tinta);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.tarjeta h4{margin:0;font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:-.02em}
+.tarjeta p{margin:0;font-size:1.02rem}
+.tarjeta .etiqueta{align-self:flex-start;margin-top:4px}
+.tarjeta a.enlace{margin-top:auto;padding-top:8px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+pre.codigo{margin:6px 0 0;padding:14px 16px;background:var(--noche);color:#EEEBFA;border-radius:6px;overflow-x:auto;font-size:.9rem;line-height:1.5;font-family:Consolas,'Courier New',monospace}
+
+
+.apoyo{background:var(--noche);color:#EEEBFA;border-top:2px solid var(--tinta)}
+.apoyo h2{color:#fff}
+.apoyo .sub{color:#BDB8DD}
+.apoyo ul{padding-left:20px;margin:0 0 28px}
+.metodo{border:2px solid #6C65A6;padding:22px 24px}
+.metodo h3{margin:0 0 8px;font-size:1.2rem;font-weight:800;color:var(--lima)}
+.metodo p{margin:0 0 14px;font-size:1.02rem}
+.correo{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.15rem;color:#fff;background:#2C2860;padding:6px 12px;border-radius:6px;user-select:all;word-break:break-all}
+.boton{display:inline-block;padding:12px 22px;background:var(--lima);color:var(--tinta);font-weight:800;text-decoration:none;border:2px solid var(--lima);border-radius:8px}
+.boton:hover{background:#fff;border-color:#fff}
+.aviso-legal{font-size:.95rem;color:#BDB8DD;margin-top:26px}
+
+footer{padding:30px 0;text-align:center;color:var(--suave);font-size:.95rem;border-top:2px solid var(--tinta)}
+@media (max-width:560px){nav a{margin-left:0;margin-right:14px}}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="contenedor">
+    <a class="marca" href="#">Samuel. N</a>
+    <nav>
+      <a href="#avances">Avances</a>
+      <a href="#articulos">Artículos</a>
+      <a href="#avisos">Avisos</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#codigos">Códigos y juegos</a>
+      <a href="#apoyar">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="portada">
+    <div class="contenedor">
+      <h1>Samuel. N</h1>
+      <p class="lema">Cuaderno abierto de mis investigaciones: avances, artículos, noticias y avisos.</p>
+    </div>
+  </div>
+
+ 
+  <section id="avances">
+    <div class="contenedor">
+      <h2>Avances</h2>
+      <p class="sub">Lo más reciente va arriba.</p>
+      <div class="linea">
+
+ 
+        <p class="vacio">Pronto habrá avances publicados.</p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="articulos" class="fondo-blanco">
+    <div class="contenedor">
+      <h2>Artículos</h2>
+      <p class="sub">Trabajos terminados que puedes leer o descargar.</p>
+      <div class="articulos">
+
+
+
+        <p class="vacio">Pronto habrá artículos publicados.</p>
+
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="avisos">
+    <div class="contenedor">
+      <h2>Avisos</h2>
+      <p class="sub">Novedades y cosas que conviene saber.</p>
+      <div class="avisos">
+
+
+
+        <p class="vacio">Por ahora no hay avisos.</p>
+
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="noticias" class="fondo-blanco">
+    <div class="contenedor">
+      <h2>Noticias</h2>
+      <p class="sub">Lo que está pasando en los temas que investigo.</p>
+      <div>
+
+
+        <p class="vacio">Pronto habrá noticias publicadas.</p>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="codigos">
+    <div class="contenedor">
+      <h2>Códigos y juegos</h2>
+      <p class="sub">Programas que escribo y juegos que hago, para ver, usar o jugar.</p>
+
+      <div class="bloque">
+        <h3 class="subtitulo">Códigos</h3>
+        <div class="tarjetas">
+
+        
+
+        </div>
+        <p class="vacio">Pronto habrá códigos publicados.</p>
+      </div>
+
+      <div class="bloque">
+        <h3 class="subtitulo">Juegos</h3>
+        <div class="tarjetas">
+
+  
+
+        </div>
+        <p class="vacio">Pronto habrá juegos publicados.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="apoyar" class="apoyo">
+    <div class="contenedor">
+      <h2>Contacto y apoyo</h2>
+      <p class="sub">Si mi trabajo te sirve, puedes ayudarme a continuarlo. Cualquier cantidad cuenta.</p>
+      <p>Lo que se reúna se usa para:</p>
+      <ul>
+        <li>Materiales y herramientas de investigación.</li>
+        <li>Acceso a artículos y bases de datos.</li>
+        <li>Tiempo para escribir y publicar los resultados.</li>
+      </ul>
+
+      <div class="metodo">
+        <h3>Contacto y donaciones por transferencia (SPEI)</h3>
+        <p>Para información, colaboraciones, trabajo o cualquier otra cosa, puedes contactarme por correo.</p>
+        <p>Si quieres donar por transferencia (SPEI), también te comparto los datos por este medio.</p>
+        <p><span class="correo">tucorreo@ejemplo.com</span></p>
+        <a class="boton" href="mailto:tucorreo@ejemplo.com">Escribir por correo</a>
+      </div>
+
+      <p class="aviso-legal">Las donaciones son voluntarias y no dan acceso a contenido exclusivo. Todo lo que publico aquí es abierto para todos.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor">© 2026 Samuel. N · Última actualización: octubre de 2026</div>
+</footer>
+
+</body>
+</html>
